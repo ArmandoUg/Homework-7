@@ -28,7 +28,7 @@ const questions = [
     type : `list`,
     name : `license`,
     message : `Which licenses were used and should be included?`,
-    choices : [`Apache`,`BSD`,`GNU`, `MIT`, `Mozilla Public License`]
+    choices : [`Apache`,`BSD`,`GNU`, `MIT`, `Mozilla Public License`, `None`]
 },
 {
    type : `input`,
@@ -57,7 +57,7 @@ function init() {
     inq
     .prompt(questions)
     .then((data) => {
-        writeToFile(data.title);
+        writeToFile(data);
         console.log(`Successfully created README.md`)
     })
     .catch((error) => {
