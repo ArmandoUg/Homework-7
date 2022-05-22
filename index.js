@@ -7,19 +7,49 @@ const questions = [
     {
     type : `input`,
     name : `title`,
-    message: `What is the title of your project`,
+    message: `What is the title of your project?`,
+},
+{
+    type : `input`,
+    name : `description`,
+    message : `What would be your description of your project?`,
+},
+{
+    type : `input`,
+    name : `installation`,
+    message : `How would you install your project for user usage?`,
+},
+{
+    type : `input`,
+    name : `usage`,
+    message : `How does a user operate your project?`,
+},
+{
+    type : `list`,
+    name : `license`,
+    message : `Which licenses were used and should be included?`,
+    choices : [`Apache`,`BSD`,`GNU`, `MIT`, `Mozilla Public License`]
+},
+{
+   type : `input`,
+   name : `Github`,
+   message : `What is your github link for user to contact you?`, 
+},
+{
+    type : `input`,
+    name : `Email`,
+    message : `What is an email for the user to contact you?`,
+},
+{
+    type : `input`,
+    name : `deployed link`,
+    message : `What is the url for your project?`,
 }
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    fs.writeFileSync(`./README.md`, `
-    # ${fileName.title}
-    ## Description
-    ${data.description}
-    ## Installation Instructions
-    ${data.installation}
-    ## Deployed Link`)
+function writeToFile(data) {
+    fs.writeFileSync(`./README.md`, genMarkdown(data))
 }
 
 // TODO: Create a function to initialize app
