@@ -2,17 +2,32 @@
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {
   switch (license) {
-    case `A` : [![]]
+    case `Apache`:
+      return `![GitHub all releases](https://img.shields.io/github/downloads/ArmandoUg/Homework-7/total?label=Apache&logo=Apache)`;
+    case `BSD`:
+      return `![License: BSD](https://img.shields.io/badge/License-Apache2.0-blue/total?logo=Apache)`;
+    case `GNU`:
+      return `![License : GNU](https://img.shields.io/badge/License-GNU-blue/total?logo=GNU)`;
+    case `MIT`:
+      return `![License : MIT](https://img.shields.io/badge/License-MIT-blue`;
+      case `None`:
+        return ``;
   }
 }
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) { 
+  if(license === `None`){
+    return ``;
+  } else {
+    return `# [License](#License)`
+  }
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) {}
+function renderLicenseSection(license) { }
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
@@ -32,7 +47,7 @@ ${data.description}
 ${data.installation}
 ## Usage
 ${data.usage}
-##License
+## License
 ${data.license}
 ## Questions
 Any questions? You can contact me at:
@@ -42,7 +57,7 @@ Any questions? You can contact me at:
 [Email] (${data.Email})
 ## Deployed Link
 [deployed link] (${data.deployedLink})`
-;
+    ;
 }
 
 module.exports = generateMarkdown;
