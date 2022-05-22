@@ -28,7 +28,7 @@ const questions = [
     type : `list`,
     name : `license`,
     message : `Which licenses were used and should be included?`,
-    choices : [`Apache`,`BSD`,`GNU`, `MIT`, `Mozilla Public License`, `None`]
+    choices : [`Apache`,`BSD`,`GNU`, `MIT`, `None`]
 },
 {
    type : `input`,
@@ -42,22 +42,22 @@ const questions = [
 },
 {
     type : `input`,
-    name : `deployed link`,
+    name : `deployed-link`,
     message : `What is the url for your project?`,
 }
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(data) {
-    fs.writeFileSync(`./README.md`, genMarkdown(data))
+function writeToFile(answers) {
+    fs.writeFileSync(`./README.md`, genMarkdown(answers))
 }
 
 // TODO: Create a function to initialize app
 function init() {
     inq
     .prompt(questions)
-    .then((data) => {
-        writeToFile(data);
+    .then((answers) => {
+        writeToFile(answers);
         console.log(`Successfully created README.md`)
     })
     .catch((error) => {

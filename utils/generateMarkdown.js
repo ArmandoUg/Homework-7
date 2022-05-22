@@ -21,42 +21,48 @@ function renderLicenseLink(license) {
   if(license === `None`){
     return ``;
   } else {
-    return `# [License](#License)`
+    return ` [License](#License)`
   }
 }
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(license) { }
+function renderLicenseSection(license) { 
+  if (license === `None`) {
+    return ``
+  } else {
+    return `## License
+    This Readme falls under the usage of the ${license} license.`
+  }
+}
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}
+function generateMarkdown(answers) {
+  return `# ${answers.title} ${renderLicenseBadge(answers.license)}
 ## Table of Contents
-- [Description] (#Decription)
-- [Installation] (#Instructions)
-- [Usage] (#Usage)
-- [Contributing] (#Contributing)
-- [License] (#License)
-- [Tests] (#Tests)
-- [Deployed link] (#Deployed-link)
-- [Questions] (#Questions)
+- [Description](#Decription)
+- [Installation](#Instructions)
+- [Usage](#Usage)
+- [Contributing](#Contributing)
+- ${renderLicenseLink(answers.license)}
+- [Tests](#Tests)
+- [Deployed link](#Deployed-link)
+- [Questions](#Questions)
 ## Description
-${data.description}
+${answers.description}
 ## Installation Instructions
-${data.installation}
+${answers.installation}
 ## Usage
-${data.usage}
-## License
-${data.license}
+${answers.usage}
+## Contributing
+${answers.contributing}
+${renderLicenseSection(answers.license)}
 ## Questions
 Any questions? You can contact me at:
-[Github] (${data.Github})
-
-
-[Email] (${data.Email})
+- [Github](https://github.com/${answers.Github})
+- [Email](${answers.Email})
 ## Deployed Link
-[deployed link] (${data.deployedLink})`
+[deployed-link](${answers.deployedLink})`
     ;
 }
 
